@@ -1,0 +1,1 @@
+--Crie um programa que receba um intervalo (assumindo que o inicio nunca será maior que o fim)e retorne a quantidade de numeros pares detro do intervalo.

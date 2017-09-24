@@ -1,0 +1,1 @@
+-- Crie um program que receba um numero entre 1 e 7 e retorn o fia da semana correspondente.Se o usuário digitar um numero fora do intervalo o program deve exibir uma mensagem e pedri que o usuário digite outro numero novamente.
