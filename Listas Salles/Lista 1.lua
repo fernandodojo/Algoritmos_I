@@ -1,4 +1,4 @@
---[[--1ªCrie um programa que lê três inteiros e informa VERDADEIRO se apenas o maior deles é parou se o menor deles é ímpar ou informa FALSO em caso contrário.
+--[[--1. Crie um programa que lê três inteiros e informa VERDADEIRO se apenas o maior deles é parou se o menor deles é ímpar ou informa FALSO em caso contrário.
 print("digite o primeiro numero")
 a=io.read("*n")
 print("digite o segundo numero")
@@ -39,15 +39,14 @@ else
   print("Falso")
 end
 
---2ª Faça um programa que lê do usuário um caractere e informa se ele é uma vogal, uma consoante ou não é uma letra.
+--2. Faça um programa que lê do usuário um caractere e informa se ele é uma vogal, uma consoante ou não é uma letra.
 
 print("Digite um caractere")
 a=io.read()
 b = (tonumber(a))
 
 if b == nil then  
-  if a == "a" or a == "e" or a == "i" or a =="o" or a == "u" then
-
+  if a == "a" or a == "e" or a == "i" or a =="o" or a == "u" or a == "A" or a == "E" or a == "I" or a =="O" or a == "U" then
     print("Vogal")
   else
     print("consoante")
@@ -57,7 +56,7 @@ else
 end
 
 
---3ªDesenvolva um programa que recebe do usuário o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um empate, a vitória do primeiro time ou do segundo time.
+--3. Desenvolva um programa que recebe do usuário o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um empate, a vitória do primeiro time ou do segundo time.
 
 print("Digite o placar do jogo")
 a = io.read("*n")
@@ -73,7 +72,7 @@ end
   
 
 
---4ªEscreva um programa que lê do usuário 4 (quatro) números inteiros e informa se há ou não um deles no intervalo entre 1 e 25, outro de 26 a 50, outro de 51 a 75 e um último de 76 a 100
+--4. Escreva um programa que lê do usuário 4 (quatro) números inteiros e informa se há ou não um deles no intervalo entre 1 e 25, outro de 26 a 50, outro de 51 a 75 e um último de 76 a 100
 
 print("Digite um numero")
 a= io.read("*n")
@@ -106,7 +105,7 @@ else
 end
 
 
--- 5ªFaça um programa que lê as três notas obrigatórias de uma disciplina e depois, apenas se necessário, lê as notas da reposição e final. O programa deve dar como saída as frases “Aprovado por média.”, “Aprovado na reposição”. “Aprovado na final.” ou “Reprovado.” respectivamente em cada uma dessas situações conforme a descrição anterior.
+--5. Faça um programa que lê as três notas obrigatórias de uma disciplina e depois, apenas se necessário, lê as notas da reposição e final. O programa deve dar como saída as frases “Aprovado por média.”, “Aprovado na reposição”. “Aprovado na final.” ou “Reprovado.” respectivamente em cada uma dessas situações conforme a descrição anterior.
 
 print("digite a primeira nota")
 n1=io.read("*n")
@@ -150,7 +149,7 @@ end
 
 
 
---6ª) Elabore um programa que recebe do usuário três cadeias de caracteres e informa VERDADEIRO se há pelo menos duas diferentes cadeias iguais aos valores 'azul', 'preto'ou 'vermelho' ou FALSO em caso contrário. Exemplos: {'azul', 'preto', 'branco'} é VERDADEIRO; {'azul', 'roxo', 'azul'} é FALSO; {'preto', vermelho', 'vermelho'} é VERDADEIRO.
+--6. Elabore um programa que recebe do usuário três cadeias de caracteres e informa VERDADEIRO se há pelo menos duas diferentes cadeias iguais aos valores 'azul', 'preto'ou 'vermelho' ou FALSO em caso contrário. Exemplos: {'azul', 'preto', 'branco'} é VERDADEIRO; {'azul', 'roxo', 'azul'} é FALSO; {'preto', vermelho', 'vermelho'} é VERDADEIRO.
 
 print("digite a primeira cor")
 a=io.read()
@@ -268,7 +267,7 @@ print("")
 print("Maior"..maior)
 print("")
 print(NotaFinal)
-]]
+
 --9. Faça um programa que requisita do usuário 5 (cinco) números inteiros e informa se pelo menos dois pares diferentes desses números são iguais. Exemplo: {3,4,4,5,3} e {1,2,2,1,2} tem 2 pares de números iguais mas {2,2,2,3,2} não tem 2 pares diferentes de números iguais.
 
 print("DIgite 5 numeros")
@@ -280,35 +279,22 @@ e= io.read("*n")
 
 iguais=0
 
-if (a==b or a==c or a==d or a==e) then 
-  iguais = iguais +1
-  if (b==c or b==d or b==e) then
-  iguais = iguais +1
+if (a==b or a==c or a==d or a==e) then
+  iguais = iguais + 1
+  if (b==c or b==d or b==e) and (b~=a) then
+    iguais = iguais + 1
+  elseif (c==d or c==e) and (c~=a) and (c~=b) then
+    iguais = iguais + 1
+  elseif (d==e) and (d~=a) and (d~=b) and (d~=c) then
+    iguais = iguais + 1
   end
-  if (c==d or c==e) then
-    iguais = iguais +1
-  end
-  if (d==e) then
-    iguais = iguais +1
-  end
-  if 
-  if iguais >2 then
-    iguais = 2
+  if iguais == 2 then
+    print("Foram encontrados " ..iguais.. "pares")
+  else
+    print("Não foi encontrado o mínimo de dois pares")
   end
 end
-print(iguais)
 
-
-
-
-
-
-
-
-
-
-
---[[
 
 --10. Faça um programa que requisita do usuário 3 (três) números inteiros para apostar num bingo e depois requisita os 3 (três) inteiros que foram sorteados. Finalmente, o programa deve informar quantos números o usuário acertou no sorteio (0, 1, 2 ou 3 acertos).
 
@@ -352,21 +338,3 @@ end
 print ("Você Acertou:".. pontos)
 
 ]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
