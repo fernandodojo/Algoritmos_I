@@ -6,8 +6,6 @@ for i =1, 100 do
   v[i] = math.random(0,500)
 end
 
-
-
 --v = {3,2,5,2,3}
 igual = 0
 for i=1, #v-1 do
