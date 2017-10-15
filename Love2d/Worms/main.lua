@@ -54,22 +54,13 @@ end
 function love.update(dt)
 	movimentos(dt)
 
-	if direcao then
-		for i, v in pairs(tiro1) do
-			v.x = v.x + 200* dt
-			if v.y < 0 then
-				v.getremoved = true
-			end
-		end
-	elseif not direcao then
-		for i, v in pairs(tiro1) do
-			v.x = v.x - 200* dt
-			if v.y < 0 then
-				v.getremoved = true
-			end
+	for i, v in pairs(tiro1) do
+		v.x = v.x + 200* dt
+		if v.x > 880 then
+			v.getremoved = true
 		end
 	end
-
+	
 
 	animtiro1:update(dt)
 
@@ -123,23 +114,11 @@ function love.draw()
 
 
   --TIRO ANIMAÇÃO
-  if direcao then
+  --if direcao then
   	for i, v in pairs (tiro1) do
   		animtiro1:draw(tiro1image,v.x, v.y, 0, 0.3, 0.3, tiro1image:getWidth()/6,tiro1image:getHeight()/4)
  	end
- 	elseif not direcao then
- 		for i, v in pairs (tiro1) do
-  		animtiro1:draw(tiro1image,v.x, v.y, 0, -0.3, 0.3, tiro1image:getWidth()/6,tiro1image:getHeight()/4)
- 	end
-  end
-	
-
-
-  --[[for i, v in pairs (tiro1) do
-  	love.graphics.draw(tiro1image, v.x, v.y, 0, 0.05, 0.05, tiroimage:getWidth()/2,tiroimage:getHeight()/2)
-  end
-]]
-
+  
   --TIRO ANIMAÇÃO
 
 end
@@ -147,12 +126,14 @@ end
 
 function love.keypressed(key)
 	if key == "space" then
+		disparos()
+		
 		table.insert(tiro1, {x = char1.x, y = char1.y})
 	end
 end
 
 function love.mousepressed(x,y,button)
-  print(x,y,button)
+ 
 end
 
 
