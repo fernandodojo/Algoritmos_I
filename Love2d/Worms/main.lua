@@ -13,7 +13,7 @@ function love.load()
 --PERSONAGEM 1 
 	char1 = {
 		x = larguradatela /2,
-		y = larguradatela/1.8,
+		y = alturadatela/1.3,
 		angulo = 0,
 		tam = 0.9,
 		--origem = 60,
@@ -36,16 +36,12 @@ function love.load()
 	tiro1 = {
 
 
-
-
-
-
 	}
 	
 	tiro1image = love.graphics.newImage("spritesheet-512px-by-197px-per-frameflip.png")
 
 	local tiro1anim = anim.newGrid(211, 81,tiro1image:getWidth( ), tiro1image:getHeight( ))
-	animtiro1 = anim.newAnimation(tiro1anim('1-3', 1,'1-3', 2), 0.03 )
+	animtiro1 = anim.newAnimation(tiro1anim('1-3', 1,'1-3', 2), 0.01 )
 
 --TIROS	
 
@@ -53,19 +49,19 @@ end
 
 function love.update(dt)
 	movimentos(dt)
-
-	for i, v in pairs(tiro1) do
-		v.x = v.x + 200* dt
-		if v.x > 880 then
-			v.getremoved = true
+	--disparos(dt)
+	
+	for i, tiro in ipairs(tiro1) do
+		tiro.x = tiro.x + (tiro.dx * dt)
+		tiro.y = tiro.y + (tiro.dy * dt)
+		if tiro.x > 760 or tiro.x < 0 then
+			table.remove(tiro1,i)
+		end
+		if tiro.y < 0  or tiro.y > 560 then
+			table.remove(tiro1,i)
 		end
 	end
-	
-
-	animtiro1:update(dt)
-
-
-	     
+	animtiro1:update(dt)     
 
 end
 
@@ -95,6 +91,8 @@ function movimentos(dt)
 end
 
 function disparos(dt)
+	--table.insert(tiro1, {x = char1.x, y = char1.y})
+
 end
 
 
@@ -125,15 +123,25 @@ end
    
 
 function love.keypressed(key)
-	if key == "space" then
-		disparos()
-		
-		table.insert(tiro1, {x = char1.x, y = char1.y})
-	end
+	--[[if key == "space" then
+		--disparos()
+	end]]
 end
 
 function love.mousepressed(x,y,button)
+	if button == 1 then
+		local startX = char1.x --+ char1image:getWidth( ) / 100
+		local startY = char1.y --+ char1image:getHeight( ) / 100
+		local mouseX = x
+		local mouseY = y
  
+		local angle = math.atan2((mouseY - startY), (mouseX - startX))
+ 
+		local bulletDx = 200 * math.cos(angle)
+		local bulletDy = 200 * math.sin(angle)
+ 
+		table.insert(tiro1, {x = startX, y = startY, dx = bulletDx, dy = bulletDy})
+	end 
 end
 
 
