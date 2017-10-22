@@ -1,4 +1,4 @@
---[[--1. Crie um programa que lê três inteiros e informa VERDADEIRO se apenas o maior deles é parou se o menor deles é ímpar ou informa FALSO em caso contrário.
+--[[--1ªCrie um programa que lê três inteiros e informa VERDADEIRO se apenas o maior deles é par ou se o menor deles é ímpar ou informa FALSO em caso contrário.
 print("digite o primeiro numero")
 a=io.read("*n")
 print("digite o segundo numero")
@@ -6,40 +6,24 @@ b=io.read("*n")
 print("digite o terceiro numero")
 c=io.read("*n")
 
-
-if a >= c and c >= b then
-  maior =a
-  menor =b
-  --print(b, c ,a)
-elseif a >= b and b >= c then
-  maior =a
-  menor =c
-  --print (c, b, a) 
-elseif b >= a and a >= c then
-  maior =b
-  menor =c
-  --print (c, a, b)
-elseif b>= c and c >= a then
-  maior =b
-  menor =a
-  --print (a, c, b)
-elseif c >= a and a >= b then
-  maior =c
-  menor =b
-  --print (b, a, c)
-elseif c >= b and b >= a then
-  maior =c
-  menor =a
-  --print (a, b, c)
+maior = a
+if b > c and b > maior then
+  maior = b
+elseif c> b and c > maior then
+  maior = c
 end
 
-if maior%2==0 and menor%2~=0 then
-  print("Verdadeiro")
-else
-  print("Falso")
+menor = a
+if b< c and b< menor then
+  menor = b
+elseif c< b and c< menor then
+  menor = c
 end
 
---2. Faça um programa que lê do usuário um caractere e informa se ele é uma vogal, uma consoante ou não é uma letra.
+print(maior%2 == 0 or menor%2~=0)
+
+
+--2ª Faça um programa que lê do usuário um caractere e informa se ele é uma vogal, uma consoante ou não é uma letra.
 
 print("Digite um caractere")
 a=io.read()
@@ -56,7 +40,7 @@ else
 end
 
 
---3. Desenvolva um programa que recebe do usuário o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um empate, a vitória do primeiro time ou do segundo time.
+--3ªDesenvolva um programa que recebe do usuário o placar de um jogo de futebol (os gols de cada time) e informa se o resultado foi um empate, a vitória do primeiro time ou do segundo time.
 
 print("Digite o placar do jogo")
 a = io.read("*n")
@@ -72,40 +56,36 @@ end
   
 
 
---4. Escreva um programa que lê do usuário 4 (quatro) números inteiros e informa se há ou não um deles no intervalo entre 1 e 25, outro de 26 a 50, outro de 51 a 75 e um último de 76 a 100
+--4ªEscreva um programa que lê do usuário 4 (quatro) números inteiros e informa se há ou não um deles no intervalo entre 1 e 25, outro de 26 a 50, outro de 51 a 75 e um último de 76 a 100
 
-print("Digite um numero")
-a= io.read("*n")
-print("Digite um numero")
-b= io.read("*n")
-print("Digite um numero")
-c= io.read("*n")
-print("Digite um numero")
-d= io.read("*n")
+print("Digite 4 numero")
+a , b, c, d = io.read("*n"), io.read("*n"),io.read("*n"),io.read("*n")
 
-if a>=1 and a<=25 then
-  print ("O primeiro numero está entre 1 e 25 ")
-else
-  print ("O primeiro numero não está entre 1 e 25 ")
-end
-if b>=26 and b<=50 then
-  print ("O segundo numero está entre 26 e 50 ")
-else
-  print ("O segundo numero não está entre 26 e 50 ")
-end 
-if c>=51 and c<=75 then
-  print ("O terceiro numero está entre 51 e 75 ")
-else
-  print ("O terceiro numero não está entre 51 e 75 ")
-end
-if d>=76 and d<=100 then
-  print ("O quarto numero está entre 76 e 100 ")
-else 
-  print ("O quarto numero não está entre 76 e 100 ")
+
+function intervalo(n)
+  if n>=1 and n<=25 then
+    print ("O primeiro numero está entre 1 e 25 ")
+  elseif n>=26 and n<=50 then
+    print ("O segundo numero está entre 26 e 50 ")
+  elseif n>=51 and n<=75 then
+    print ("O terceiro numero está entre 51 e 75 ")
+  elseif n>=76 and n<=100 then
+    print ("O quarto numero está entre 76 e 100 ")
+  else 
+    print (false)
+  end
 end
 
 
---5. Faça um programa que lê as três notas obrigatórias de uma disciplina e depois, apenas se necessário, lê as notas da reposição e final. O programa deve dar como saída as frases “Aprovado por média.”, “Aprovado na reposição”. “Aprovado na final.” ou “Reprovado.” respectivamente em cada uma dessas situações conforme a descrição anterior.
+print(intervalo(a))
+print(intervalo(b))
+print(intervalo(c))
+print(intervalo(d))
+
+
+
+
+-- 5ªFaça um programa que lê as três notas obrigatórias de uma disciplina e depois, apenas se necessário, lê as notas da reposição e final. O programa deve dar como saída as frases “Aprovado por média.”, “Aprovado na reposição”. “Aprovado na final.” ou “Reprovado.” respectivamente em cada uma dessas situações conforme a descrição anterior.
 
 print("digite a primeira nota")
 n1=io.read("*n")
@@ -149,8 +129,7 @@ end
 
 
 
---6. Elabore um programa que recebe do usuário três cadeias de caracteres e informa VERDADEIRO se há pelo menos duas diferentes cadeias iguais aos valores 'azul', 'preto'ou 'vermelho' ou FALSO em caso contrário. Exemplos: {'azul', 'preto', 'branco'} é VERDADEIRO; {'azul', 'roxo', 'azul'} é FALSO; {'preto', vermelho', 'vermelho'} é VERDADEIRO.
-
+--6ª) Elabore um programa que recebe do usuário três cadeias de caracteres e informa VERDADEIRO se há pelo menos duas diferentes cadeias iguais aos valores 'azul', 'preto'ou 'vermelho' ou FALSO em caso contrário. Exemplos: {'azul', 'preto', 'branco'} é VERDADEIRO; {'azul', 'roxo', 'azul'} é FALSO; {'preto', vermelho', 'vermelho'} é VERDADEIRO.
 print("digite a primeira cor")
 a=io.read()
 print("digite a primeira cor")
@@ -159,18 +138,39 @@ print("digite a primeira cor")
 c=io.read()
 
 
-if ((a == "azul") or (a == "preto") or (a =="vermelho")) and ((b == "azul") or (b =="preto") or (b =="vermelho")) then
-  print("Verdadeiro")
-
-elseif ((a == "azul") or (a == "preto") or (a =="vermelho")) and ((c == "azul") or (c == "preto") or (c =="vermelho")) then
-  print("Verdadeiro")
-
-elseif ((b == "azul") or (b =="preto") or (b =="vermelho")) and ((c == "azul") or (c == "preto") or (c =="vermelho")) then
-  print("Verdadeiro")
-else
-  print("Falso")
+function testacor1(x, y)
+  if (x == "azul" or x == "preto" or x =="vermelho") and (y == "azul" or y =="preto"or y =="vermelho") then
+    return true
+  end  
+end
+function testacor(x, y)
+  if (x == "azul" or x == "preto" or x =="vermelho") and (y == "azul" or y =="preto"or y =="vermelho") then
+    print("Verdadeiro")
+  else 
+    print("Falso")
+  end
 end
 
+
+if a ~= b and b ~=c and a ~= c then 
+  if testacor1(a,b) then
+    print("Verdadeiro")
+  elseif testacor1(a,c) then
+    print("Verdadeiro")
+  elseif testacor1(b,c) then
+    print("Verdadeiro")
+  else
+    print("falso")
+  end
+elseif a == b and b ~= c then
+  testacor(b,c)
+elseif b == c and c ~=a then
+   testacor(c,a)
+elseif a==c and a ~= b  then
+   testacor(a, b)
+else
+  print("falso")
+end   
 
 
 --7. Um aluno de computação está organizando um bolão de futebol. Segundo suas regras, os apostadores informam o placar do jogo e ganham 10 pontos se acertarem o vencedor ou se foi empate e ganham mais 5 pontos para o placar de cada time que acertarem. Exemplo: se o placar do jogo foi 3x2, são 0 pontos se o placar apostado foi 0x1; 5 pontos para os placares apostados 0x2 ou 3x5; 10 pontos para o placar apostado 1x0; ou 20 pontos para o placar exato de 3x2. Faça um programa que requisita do usuário o placar apostado e depois o placar do jogo e informa quantos pontos o apostador fez.
@@ -338,3 +338,21 @@ end
 print ("Você Acertou:".. pontos)
 
 ]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
