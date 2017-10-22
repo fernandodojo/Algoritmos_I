@@ -1,4 +1,4 @@
---[[--1ªCrie um programa que lê três inteiros e informa VERDADEIRO se apenas o maior deles é par ou se o menor deles é ímpar ou informa FALSO em caso contrário.
+--1ªCrie um programa que lê três inteiros e informa VERDADEIRO se apenas o maior deles é par ou se o menor deles é ímpar ou informa FALSO em caso contrário.
 print("digite o primeiro numero")
 a=io.read("*n")
 print("digite o segundo numero")
@@ -175,98 +175,82 @@ end
 
 --7. Um aluno de computação está organizando um bolão de futebol. Segundo suas regras, os apostadores informam o placar do jogo e ganham 10 pontos se acertarem o vencedor ou se foi empate e ganham mais 5 pontos para o placar de cada time que acertarem. Exemplo: se o placar do jogo foi 3x2, são 0 pontos se o placar apostado foi 0x1; 5 pontos para os placares apostados 0x2 ou 3x5; 10 pontos para o placar apostado 1x0; ou 20 pontos para o placar exato de 3x2. Faça um programa que requisita do usuário o placar apostado e depois o placar do jogo e informa quantos pontos o apostador fez.
 
-print("digite a quantidade de gols apostado")
+print("Digite o placar apostado")
 a=io.read("*n")
 b=io.read("*n")
---print("Digite o placar final")
+--int("Digite o placar final")
 c=3 --io.read("*n")
 d=2 --io.read("*n")
 
 usuario= 0
 
-if a==c and b==d then
-  if a==b and c==d then
+if a==c and b==d then --verifica se ocorreu o acerto exato do numero de gols.
+  usuario = usuario + 20 
+  if a==b and c==d then -- verifica se além do acerto exato, se houve empate.
     usuario = usuario + 10
-  else
-    usuario = usuario + 20
   end
 end
 
-if (a==c and b~=d) or (a~=c and b==d) then
+if (a==c and b~=d) or (a~=c and b==d) then -- verifica se houve um acerto apenas da quantidade de gols da partida final.
   usuario = usuario +5
 end
-if a~=c and b~=d then
+if a~=c and b~=d then -- verifica se mesmo não ocorrendo acerto do placar, houva acerto do vencedor.
   if (a>b and c>d) or (a<b and c<d) then
     usuario = usuario +10
-  else
+  else -- não ocorrendo nenhum acerto 
     usuario = usuario + 0
   end
 end
 
-print (usuario)
-
+print ("O apostador somou o total de " .. usuario.. " pontos")
 
 --8. Em uma competição de saltos ornamentais, 6 (seis) juízes informam notas reais variando de 0 a 10. A nota final do atleta deve excluir a maior e a menor nota dos juízes e é composta pela soma das quatro demais notas. Faça um programa que lê do usuário as seis notas dos juízes e informa a nota final do atleta (a soma das notas excluindo a menor e a maior delas).
 
-print("DIgite 6 notas")
-a= io.read("*n")
-b= io.read("*n")
-c= io.read("*n")
-d= io.read("*n")
-e= io.read("*n")
-f= io.read("*n")
+print("Digite 6 notas")
+a,b,c,d,e,f= io.read("*n", "*n", "*n", "*n", "*n", "*n")
 
 menor = 10
 maior = 0
 
---Menor
-if a <= menor  then
-  menor = a
-end
-if b<= menor then
-  menor = b
-end
-if c<=menor then
-  menor = c
-end
-if d<= menor then
-  menor = d
-end
-if e <= menor then
-  menor = e
-end
-if f <= menor then
-  menor = f
+function maiorx(x)
+  if x >= maior then
+    maior = x
+  end
+  return maior
 end
 
---Maior
-if a >= maior  then
-  maior = a
+
+function menorx(x)
+  if x <= menor then
+    menor = x
+  end
+  return menor
 end
-if b >= maior  then
-  maior = b
-end
-if c >= maior  then
-  maior = c
-end
-if d >= maior  then
-  maior = d
-end
-if e >= maior  then
-  maior = e
-end
-if f >= maior  then
-  maior = f
-end
+
+
+maiorx(a)
+maiorx(b)
+maiorx(c)
+maiorx(d)
+maiorx(e)
+maiorx(f)
+
+menorx(a)
+menorx(b)
+menorx(c)
+menorx(d)
+menorx(e)
+menorx(f)
+
 
 NotaFinal = a+b+c+d+e+f-maior-menor
 
 print("")
-print("Menor"..menor)
+print("Menor: "..menor)
 print("")
-print("Maior"..maior)
+print("Maior: "..maior)
 print("")
-print(NotaFinal)
+print("Nota Final: "..NotaFinal)
 
 --9. Faça um programa que requisita do usuário 5 (cinco) números inteiros e informa se pelo menos dois pares diferentes desses números são iguais. Exemplo: {3,4,4,5,3} e {1,2,2,1,2} tem 2 pares de números iguais mas {2,2,2,3,2} não tem 2 pares diferentes de números iguais.
 
@@ -336,23 +320,4 @@ end
 
 
 print ("Você Acertou:".. pontos)
-
-]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
