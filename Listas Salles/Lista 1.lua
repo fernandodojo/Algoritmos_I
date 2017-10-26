@@ -175,6 +175,11 @@ end
 
 --7. Um aluno de computação está organizando um bolão de futebol. Segundo suas regras, os apostadores informam o placar do jogo e ganham 10 pontos se acertarem o vencedor ou se foi empate e ganham mais 5 pontos para o placar de cada time que acertarem. Exemplo: se o placar do jogo foi 3x2, são 0 pontos se o placar apostado foi 0x1; 5 pontos para os placares apostados 0x2 ou 3x5; 10 pontos para o placar apostado 1x0; ou 20 pontos para o placar exato de 3x2. Faça um programa que requisita do usuário o placar apostado e depois o placar do jogo e informa quantos pontos o apostador fez.
 
+--7. Um aluno de computação está organizando um bolão de futebol. Segundo suas regras, os apostadores informam o placar do jogo e ganham 10 pontos
+-- se acertarem o vencedor ou se foi empate e ganham mais 5 pontos para o placar de cada time que acertarem. Exemplo: se o placar do jogo foi 3x2, 
+--o 0 pontos se o placar apostado foi 0x1; 5 pontos para os placares apostados 0x2 ou 3x5; 10 pontos para o placar apostado 1x0; ou 20 pontos para
+-- placar exato de 3x2. Faça um programa que requisita do usuário o placar apostado e depois o placar do jogo e informa quantos pontos o apostador fez.
+
 print("Digite o placar apostado")
 a=io.read("*n")
 b=io.read("*n")
@@ -204,53 +209,68 @@ end
 
 print ("O apostador somou o total de " .. usuario.. " pontos")
 
+
 --8. Em uma competição de saltos ornamentais, 6 (seis) juízes informam notas reais variando de 0 a 10. A nota final do atleta deve excluir a maior e a menor nota dos juízes e é composta pela soma das quatro demais notas. Faça um programa que lê do usuário as seis notas dos juízes e informa a nota final do atleta (a soma das notas excluindo a menor e a maior delas).
 
-print("Digite 6 notas")
-a,b,c,d,e,f= io.read("*n", "*n", "*n", "*n", "*n", "*n")
+print("DIgite 6 notas")
+a= io.read("*n")
+b= io.read("*n")
+c= io.read("*n")
+d= io.read("*n")
+e= io.read("*n")
+f= io.read("*n")
 
 menor = 10
 maior = 0
 
-function maiorx(x)
-  if x >= maior then
-    maior = x
-  end
-  return maior
+--Menor
+if a <= menor  then
+  menor = a
+end
+if b<= menor then
+  menor = b
+end
+if c<=menor then
+  menor = c
+end
+if d<= menor then
+  menor = d
+end
+if e <= menor then
+  menor = e
+end
+if f <= menor then
+  menor = f
 end
 
-
-function menorx(x)
-  if x <= menor then
-    menor = x
-  end
-  return menor
+--Maior
+if a >= maior  then
+  maior = a
 end
-
-
-maiorx(a)
-maiorx(b)
-maiorx(c)
-maiorx(d)
-maiorx(e)
-maiorx(f)
-
-menorx(a)
-menorx(b)
-menorx(c)
-menorx(d)
-menorx(e)
-menorx(f)
-
+if b >= maior  then
+  maior = b
+end
+if c >= maior  then
+  maior = c
+end
+if d >= maior  then
+  maior = d
+end
+if e >= maior  then
+  maior = e
+end
+if f >= maior  then
+  maior = f
+end
 
 NotaFinal = a+b+c+d+e+f-maior-menor
 
 print("")
-print("Menor: "..menor)
+print("Menor"..menor)
 print("")
-print("Maior: "..maior)
+print("Maior"..maior)
 print("")
-print("Nota Final: "..NotaFinal)
+print(NotaFinal)
 
 --9. Faça um programa que requisita do usuário 5 (cinco) números inteiros e informa se pelo menos dois pares diferentes desses números são iguais. Exemplo: {3,4,4,5,3} e {1,2,2,1,2} tem 2 pares de números iguais mas {2,2,2,3,2} não tem 2 pares diferentes de números iguais.
 
@@ -320,4 +340,23 @@ end
 
 
 print ("Você Acertou:".. pontos)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
