@@ -1,6 +1,0 @@
-git init
-git status
-git add Nome do arquivo
-git status
-git commit -m "Comentário/Nome"
-git push
