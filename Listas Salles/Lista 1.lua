@@ -180,30 +180,21 @@ end
 --o 0 pontos se o placar apostado foi 0x1; 5 pontos para os placares apostados 0x2 ou 3x5; 10 pontos para o placar apostado 1x0; ou 20 pontos para
 -- placar exato de 3x2. Faça um programa que requisita do usuário o placar apostado e depois o placar do jogo e informa quantos pontos o apostador fez.
 
+
 print("Digite o placar apostado")
 a=io.read("*n")
 b=io.read("*n")
 --int("Digite o placar final")
-c=3 --io.read("*n")
-d=2 --io.read("*n")
-
-usuario= 0
-
-if a==c and b==d then --verifica se ocorreu o acerto exato do numero de gols.
-  usuario = usuario + 20 
-  if a==b and c==d then -- verifica se além do acerto exato, se houve empate.
-    usuario = usuario + 10
-  end
-end
-
-if (a==c and b~=d) or (a~=c and b==d) then -- verifica se houve um acerto apenas da quantidade de gols da partida final.
-  usuario = usuario +5
-end
-if a~=c and b~=d then -- verifica se mesmo não ocorrendo acerto do placar, houva acerto do vencedor.
-  if (a>b and c>d) or (a<b and c<d) then
-    usuario = usuario +10
-  else -- não ocorrendo nenhum acerto 
-    usuario = usuario + 0
+c=5 --io.read("*n")
+d=5 --io.read("*n")
+usuario = 0
+if (a>b and c>d) or (a<b and c<d) or (a==c and b==d) then
+  usuario = usuario +10
+  if (a==c  or b==d ) then -- verifica se houve um acerto apenas da quantidade de gols da partida final.
+    usuario = usuario +5
+    if (a==c  or b==d ) then -- verifica se houve um acerto apenas da quantidade de gols da partida final.
+    usuario = usuario +5
+    end    
   end
 end
 
