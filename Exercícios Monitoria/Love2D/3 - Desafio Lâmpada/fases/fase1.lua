@@ -1,22 +1,24 @@
 function fase1_load()
 	x1, y1 = 0, 0
-	
-	--Coordenadas e Raio
-	xC1, yC1, rC1 =250, 400, 32
-	xC2, yC2, rC2 = 550, 400, 32
-	xC3, yC3, rC3 = 720, 550, 32
 
+	--Circulo 1
+	xC1, yC1, rC1 =250, 400, 32
+	--Circulo 2
+	xC2, yC2, rC2 = 550, 400, 32
+	--Circulo 3
+	xC3, yC3, rC3 = 700, 500, 32
 	--Valor booleano do C1, C2
 	bool1, bool2 = true, true
 
-	--Adição de imagens de cada Círculo e Lampada
+--Adição de imagens de cada Círculo e Lampada
 	green = love.graphics.newImage("images/green.png")
-	green2= love.graphics.newImage("images/green2.png")
 	red = love.graphics.newImage("images/red.png")
-	
+	yellow = love.graphics.newImage("images/yellow.png")
+
 	lamp1=love.graphics.newImage("images/lampada1.png")
 	lamp2=love.graphics.newImage("images/lampada2.png")
---Definição de fonte e tamanho
+
+--Adição e Definição de fonte
 	font  = love.graphics.setNewFont("backlash.ttf", 32)
 	love.graphics.setFont(font)
 
@@ -54,28 +56,29 @@ function fase1_draw()
 	end
 
 
+--Desenho e posicionamento do botão amarelho(next) dentro do circulo C3
+	love.graphics.draw(yellow, xC3-32,yC3-32)
+
+
 --Fase1 - Acendimento da lampada quando condições são verdadeiras, assim como ativação do botão next.
 	if not (bool1) and not(bool2) then
 		love.graphics.draw(lamp2, 336, 36)
-		love.graphics.draw(green, xC3-32,yC3-32)
 		if checaToqueC(mx, my, xC3, yC3, rC3) then
 			fase2()
 		end
 	else
 		love.graphics.draw(lamp1, 336, 36)
-		love.graphics.draw(green2, xC3-32,yC3-32)
 	end
 
---Impressão dos botões	
+--Impressão dos botões
 	love.graphics.print(tostring(bool1), 220, 385)
 	love.graphics.print(tostring(bool2), 520, 385)
-	love.graphics.printf("NEXT",693, 535, 400)
+	love.graphics.printf("NEXT",673, 485, 400)
 
--- Impressões de interação com usuário(fase)
-	love.graphics.printf("Level 1", 10,10,400)
-	love.graphics.printf("NOT (", 100, 385, 400)
-	love.graphics.printf("AND", 380, 385, 400)
-	love.graphics.printf(" )", 600, 385, 400)
+	-- Impressões de interação com usuário(fase)
+	love.graphics.printf("NOT (",100, 385,400)
+	love.graphics.printf("AND", 400,385,400)
+	love.graphics.printf(" )", 600,385,400)
 
 end
 

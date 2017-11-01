@@ -6,8 +6,9 @@ io.stdout:setvbuf "no"
 
 require "function/boolean"
 require "function/circle"
-require "fases/fase1"
-require "fases/fase2"
+require "function/menu"
+require "levels/fase1"
+require "levels/fase2"
 
 function love.keypressed(key)
 	if key == "escape" then
@@ -16,12 +17,14 @@ function love.keypressed(key)
 end
 
 function love.load()
-	gamestate = "fase1"
-	fase1_load()
+	gamestate = "menu"
+	menu_load()
 end
 
 function love.update(dt)
-	if gamestate == "fase1" then
+	if gamestate == "menu" then
+		menu_update(dt)
+	elseif gamestate == "fase1" then
 		fase1_update(dt)
 	elseif gamestate == "fase2" then
 		fase2_update(dt)
@@ -33,13 +36,16 @@ function love.update(dt)
 end
 
 function love.draw()
-	if gamestate == "fase1" then
+
+	if gamestate == "menu" then
+		menu_draw()
+	elseif gamestate == "fase1" then
 		fase1_draw()
 	elseif gamestate == "fase2" then
 		fase2_draw()
 	elseif gamestate == "fase3" then
 		fase3_draw()
 	elseif gamestate == "fase4" then
-		fase2_draw()
+		fase4_draw()
 	end
 end
