@@ -1,10 +1,12 @@
 function fase1_load()
-	x1, y1 = 0, 0
-	
+	mx, my = 0, 0
+
 	--Coordenadas e Raio
 	xC1, yC1, rC1 =250, 400, 32
 	xC2, yC2, rC2 = 550, 400, 32
 	xC3, yC3, rC3 = 720, 550, 32
+
+	backcircle = {x = 80, y = 550,	r = 32}
 
 	--Valor booleano do C1, C2
 	bool1, bool2 = true, true
@@ -12,10 +14,12 @@ function fase1_load()
 	--Adição de imagens de cada Círculo e Lampada
 	green = love.graphics.newImage("images/green.png")
 	green2= love.graphics.newImage("images/green2.png")
+	yellow = love.graphics.newImage("images/yellow.png")
 	red = love.graphics.newImage("images/red.png")
-	
+
 	lamp1=love.graphics.newImage("images/lampada1.png")
 	lamp2=love.graphics.newImage("images/lampada2.png")
+
 --Definição de fonte e tamanho
 	font  = love.graphics.setNewFont("backlash.ttf", 32)
 	love.graphics.setFont(font)
@@ -32,6 +36,9 @@ function fase1_update(dt)
 			end
 			if checaToqueC(mx, my, xC2, yC2, rC2) then
 				bool2 = boolean(bool2)
+			end
+			if checaToqueC(mx, my, backcircle.x, backcircle.y, backcircle.r) then
+				menu()
 			end
 		end
 	end
@@ -66,10 +73,12 @@ function fase1_draw()
 		love.graphics.draw(green2, xC3-32,yC3-32)
 	end
 
---Impressão dos botões	
+--Impressão dos botões
 	love.graphics.print(tostring(bool1), 220, 385)
 	love.graphics.print(tostring(bool2), 520, 385)
 	love.graphics.printf("NEXT",693, 535, 400)
+	love.graphics.draw(yellow,backcircle.x-32,backcircle.y-32)
+	love.graphics.printf("BACK", backcircle.x -29, 535, 400)
 
 -- Impressões de interação com usuário(fase)
 	love.graphics.printf("Level 1", 10,10,400)
@@ -79,7 +88,12 @@ function fase1_draw()
 
 end
 
--- Função para troca de fase
+--Funções para troca de fase
+function menu()
+	gamestate = "menu"
+	menu_load()
+end
+
 function fase2()
 	gamestate = "fase2"
 	fase2_load()

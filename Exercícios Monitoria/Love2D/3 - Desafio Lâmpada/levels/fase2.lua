@@ -1,11 +1,13 @@
 function fase2_load()
-	x1, y1 = 0, 0
+	mx, my = 0, 0
 
 	--Coordenadas e Raio
-	xC1, yC1, rC1 = 200, 400, 32
-	xC2, yC2, rC2 = 500, 400, 32
-	xC3, yC3, rC3 = 700, 400, 32
-	xC4, yC4, rC4 = 720, 550, 32
+	xC1, yC1, rC1 = 200, 400, 32 --Circle 1
+	xC2, yC2, rC2 = 500, 400, 32 -- Circle 2
+	xC3, yC3, rC3 = 700, 400, 32 -- Circle 3
+	xC4, yC4, rC4 = 720, 550, 32 -- Circle Next
+
+	backcircle = {x = 80, y = 550,	r = 32}
 
 
 --Valor booleano do C1, C2, C3
@@ -14,7 +16,8 @@ function fase2_load()
 	green = love.graphics.newImage("images/green.png")
 	green2= love.graphics.newImage("images/green2.png")
 	red = love.graphics.newImage("images/red.png")
-	
+	yellow = love.graphics.newImage("images/yellow.png")
+
 	lamp1 = love.graphics.newImage("images/lampada1.png")
 	lamp2 = love.graphics.newImage("images/lampada2.png")
 
@@ -37,6 +40,9 @@ function fase2_update(dt)
 				end
 				if checaToqueC(mx, my, xC3, yC3, rC3) then
 					bool3 = boolean(bool3)
+				end
+				if checaToqueC(mx, my, backcircle.x, backcircle.y, backcircle.r) then
+					fase1()
 				end
 		end
 	end
@@ -65,7 +71,7 @@ function fase2_draw()
 		love.graphics.draw(green,xC3-32,yC3-32)
 	end
 
-	
+
 --Fase2 - Acendimento da lampada quando condições são verdadeiras, assim como ativação do botão next.
 	if  not (bool1) and (bool2 and bool3) then
 		love.graphics.draw(lamp2, 336, 36)
@@ -82,7 +88,11 @@ function fase2_draw()
 	love.graphics.print(tostring(bool1), 168, 385)
 	love.graphics.print(tostring(bool2), 468, 385)
 	love.graphics.print(tostring(bool3), 668, 385)
+	love.graphics.draw(yellow,backcircle.x-32,backcircle.y-32)
+
 	love.graphics.printf("NEXT", 693, 535, 400)
+	love.graphics.printf("BACK", backcircle.x -29, 535, 400)
+
 
 -- Impressões de interação com usuário(fase)
 	love.graphics.printf("Level 2", 10, 10, 400)
@@ -91,10 +101,13 @@ function fase2_draw()
 	love.graphics.printf("(", 400, 385, 400)
 	love.graphics.printf(")", 750, 385, 400)
 	love.graphics.printf("AND", 570, 385, 400)
-	
 
 
+end
 
+function fase1()
+	gamestate = "fase1"
+	fase1_load()
 end
 
 function fase3()
