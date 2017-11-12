@@ -24,7 +24,7 @@ function shot2_draw()
 		love.graphics.circle("fill", v.x, v.y, 3)
 		if circlecolision(player1.x, player1.y, v.x, v.y, 20) then
 			love.graphics.print("ok", 400, 0)
-
+			--gamestate = "player1"
 		end
 	end
 

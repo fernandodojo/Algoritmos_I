@@ -25,7 +25,7 @@ function shot1_draw()
 		love.graphics.circle("fill", v.x, v.y, 3)
 		if circlecolision(player2.x, player2.y, v.x, v.y, 20) then
 			love.graphics.print("ok2", 400, 40)
-
+			--gamestate = "player2"
 		end
 	end
 
@@ -43,6 +43,7 @@ function shot1_mousepressed(x, y, button)
 	direction1y = 200 * math.sin(angle1)
 
 	if button == 1 then
-		table.insert(bullets1, {x = player1.x, y = player1.y, dx = direction1x , dy = direction1y})		
+		table.insert(bullets1, {x = player1.x, y = player1.y, dx = direction1x , dy = direction1y})
+		--gamestate = "player2"		
 	end
 end
