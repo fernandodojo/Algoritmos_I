@@ -1,6 +1,8 @@
 function shot1_load()
 	bullets1 = {}
 	angle1 = 0
+	shotnumber = 0
+
 
 end
 
@@ -8,12 +10,12 @@ function shot1_update(dt)
 	for i, v in ipairs(bullets1) do
 		v.x = v.x + v.dx * dt
 		v.y = v.y + v.dy * dt
-		v.dy = v.dy + 1
-		
+		v.dy = v.dy + 5
 
 		if v.x> 790 or v.x < 10 or v.y > 600 or circlecolision(player2.x, player2.y, v.x, v.y, 18) then
 			gamestate = "player2"
 			table.remove(bullets1, i)
+			shotnumber = shotnumber - 1
 		end
 
 	end
@@ -38,12 +40,15 @@ function shot1_mousepressed(x, y, button)
 	my = y
 
 	angle1 = math.atan2(my-player1.y , mx - player1.x )
-	
-	direction1x = 200 * math.cos(angle1)
-	direction1y = 200 * math.sin(angle1)
 
-	if button == 1 then
+	direction1x = 400 * math.cos(angle1)
+	direction1y = 400 * math.sin(angle1)
+
+	if button == 1 and shotnumber == 0 then
+
 		table.insert(bullets1, {x = player1.x, y = player1.y, dx = direction1x , dy = direction1y})
-		--gamestate = "player2"		
+		shotnumber = shotnumber + 1
+
+		--gamestate = "player2"
 	end
 end
