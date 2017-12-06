@@ -11,14 +11,9 @@ end]]
 --1) Dado um vetor qualquer com 100 numero reiais, faça ummódulo que informa se há ou não numero repetidos nesse vetor.
 
 vetor = {}
-for i = 1, 10 do
-  vetor[i] = math.random(0,11)
+for i = 1, 100 do
+  vetor[i] = math.random(0,100)
 end
---impressao--
-for i = 1, 10 do
-  print(vetor[i])
-end
---impressao--
 
 function repetido(v)
   count = 0
