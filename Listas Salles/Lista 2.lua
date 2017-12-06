@@ -6,7 +6,7 @@
     s = s .. m[i][j] .. ' '
   end
   print(s)
-end]]
+end
 
 --1) Dado um vetor qualquer com 100 numero reiais, faça ummódulo que informa se há ou não numero repetidos nesse vetor.
 
@@ -34,4 +34,17 @@ end
 
 print(repetido(vetor))
 
---2)
+--2) Crie uma função que imprime na tela os elementos de um vetor de 35 números inteiros na ordem inversa.
+vetor = {}
+for i = 1, 35 do
+  vetor[i] = math.random(0,35)
+end
+
+function printreverso(v)
+  for i= #v, 1, -1 do
+    print(v[i])
+  end
+end
+
+print(printreverso(vetor))
+]]
