@@ -21,7 +21,7 @@ function repetido(v)
     for j = i+1, #v do
       if v[i] == v[j] then
         count = count + 1
-        break     
+        break
       end
     end
     if count >= 1 then
@@ -31,6 +31,19 @@ function repetido(v)
     end
   end
 end
+
+--verssao rebeca
+
+--[[function repetido(v)
+  for i=1, #v do
+    for j = i+1, #v do
+      if v[i] == v[j] then
+        return true
+      end
+    end
+  end
+  return false
+end]]
 
 print(repetido(vetor))
 
