@@ -398,4 +398,449 @@ maiorimpar = vet[1]
 end
 
 print(maiorparimpar(vetor))
+
+
+--27
+
+mat = {}
+for i =1, 40 do 
+	mat = {}
+	for j =1, 30 do
+		mat[i][j] = math.random(-50,50)
+	end
+end
+
+
+a = 2
+
+for i =1 , 40 do
+	for j =1 , 30 do 
+		mat[i][j] = mat[i][j] * a
+	end
+end
+
+
+--28
+
+mat = {}
+for i =1, 2 do
+	mat[i] = {}
+	for j =1, 4 do
+		mat[i][j] = math.random(1,20)
+	end
+end
+
+
+for i =1, 2 do
+	for j =1, 4 do
+		for k =j, 4  do		    
+		    if mat[i][k] < mat[i][j]  then
+		        mat[i][j], mat[i][k] = mat[i][k], mat[i][j]      		
+    		end
+  		end
+	end
+end
+
+m = mat
+
+for i=1,#m do
+  s = ''
+  for j=1,#m[i] do
+    s = s .. m[i][j] .. ' '
+  end
+  print(s)
+end]]
+
+--29
+
+mat = {}
+for i =1, 2 do
+	mat[i] = {}
+	for j =1, 4 do
+		mat[i][j] = math.random(1,20)
+	end
+end
+for i=1, 2 do
+	for j =1, 4 do
+		for k=i, 2 do
+			if mat[j][k] < mat[j][i] then
+				mat[j][k] , mat[j][i] = mat[j][i], mat[j][k]
+			end
+		end
+	end
+end
+
+m = mat
+
+for i=1,#m do
+  s = ''
+  for j=1,#m[i] do
+    s = s .. m[i][j] .. ' '
+  end
+  print(s)
+end
+
+
+--30
+--[[
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(-50,50)
+	end
+end
+
+function somamatriz(matriz)
+	soma = 0
+	for i =1, 30 do
+		for j =1 , 50 do
+			soma = soma + matriz[i][j]
+		end
+	end
+	return soma
+end
+print(somamatriz(mat))
+
+--31
+
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(-150,150)
+	end
+end
+
+function contaparesmatriz(matriz)
+	count = 0
+	for i =1, 30 do
+		for j=1, 50 do
+			if matriz[i][j]%2==0 then
+				count = count + 1
+			end
+		end
+	end
+	return count
+end
+print(contaparesmatriz(mat))
+
+
+--32 
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(-150,150)
+	end
+end
+function contaparimparmatriz(matriz)
+	countpar = 0
+	countimpar = 0 
+	for i =1, 30 do
+		for j=1, 50 do
+			if matriz[i][j]%2==0 then
+				countpar = countpar + 1
+			end
+			if matriz[i][j]%2~=0 then
+				countimpar = countimpar + 1
+			end
+		end		
+	end
+	return countpar, countimpar
+end
+
+print(contaparimparmatriz(mat))
+
+--33
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(-150,150)
+	end
+end
+
+function menormatriz(matriz)
+	menor = matriz[1]
+	for i=1, 30 do
+		for j =1, 50 do
+			if matriz [i][j]< menor then
+				menor = matriz[i][j]
+			end
+		end
+	end
+	return menor
+end
+
+print(menormatriz(mat))
+
+--34
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(-150,150)
+	end
+end
+
+function procurapar(matriz)
+	par = 0
+	flag = false
+	for i=1, 50 do
+		if flag then
+			break
+		end
+		for j=1, 30 do
+			if matriz[j][i]%2==0 then
+				par = matriz[j][i]
+				flag = true
+				break
+			end
+		end
+	end
+	return par
+end
+
+print(procurapar(mat))
+
+--35
+
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(1,1000)
+	end
+end
+
+function maiorparmatriz(matriz)
+	maiorpar = matriz[1][1]
+
+	for i=1, 30 do
+		for j=1, 50 do
+			if maiorpar%2~=0 then
+				if matriz[i][j]%2==0 then
+					maiorpar = matriz[i][j]
+				end
+			end
+			if matriz[i][j] > maiorpar and matriz[i][j]%2==0 then
+				maiorpar = matriz[i][j]
+			end
+		end
+	end
+	if maiorpar%2~= 0 then
+		print("matriz não possui numero par")
+	else
+		return maiorpar
+	end
+end
+
+print(maiorparmatriz(mat))
+
+--36
+
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(1,1000)
+	end
+end
+
+function menorparmatriz(matriz)
+	menorpar = matriz[1][1]
+
+	for i=1, 30 do
+		for j=1, 50 do
+			if menorpar%2~=0 then
+				if matriz[i][j]%2==0 then
+					menorpar = matriz[i][j]
+				end
+			end
+			if matriz[i][j] < menorpar and matriz[i][j]%2==0 then
+				menorpar = matriz[i][j]
+			end
+		end
+	end
+	if menorpar%2~= 0 then
+		print("matriz não possui numero par")
+	else
+		return menorpar
+	end
+end
+
+print(menorparmatriz(mat))
+
+
+--37
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 50 do
+		mat[i][j] = math.random(1,1000)
+	end
+end
+
+function maiormenorparmatriz(matriz)
+	maiorpar = matriz[1][1]
+	menorpar = matriz[1][1]
+	for i =1, 30 do
+		for j=1 , 50 do
+			if maiorpar%2~=0 then
+				if matriz[i][j]%2==0 then
+					maiorpar = matriz[i][j]
+				end
+			end
+			if menorpar%2~=0 then
+				if matriz[i][j]%2==0 then
+					menorpar=matriz[i][j]
+				end
+			end
+			if matriz[i][j]> maiorpar and matriz[i][j]%2==0 then
+				maiorpar = matriz[i][j]
+			end
+			if matriz[i][j]< menorpar and matriz[i][j]%2==0 then
+				menorpar = matriz[i][j]
+			end
+		end
+	end
+	if menorpar%2~=0 then
+		print("a matriz não possui numero par")
+	else
+		return maiorpar, menorpar
+	end
+end
+
+print(maiormenorparmatriz(mat))
+
+--38
+
+function maiorparmatriz(matriz)
+	maiorpar = matriz[1][1]
+
+	for i=1, 30 do
+		for j=1, 50 do
+			if maiorpar%2~=0 then
+				if matriz[i][j]%2==0 then
+					maiorpar = matriz[i][j]
+				end
+			end
+			if matriz[i][j] > maiorpar and matriz[i][j]%2==0 then
+				maiorpar = matriz[i][j]
+			end
+		end
+	end
+	if maiorpar%2~= 0 then
+		print("matriz não possui numero par")
+	else
+		return maiorpar
+	end
+end
+
+--39
+vetor= {}
+for i =1, 50 do
+	vetor[i] = math.random(1,100)
+end
+
+function repetido(matriz)
+	flag = false
+	for i=1, 50 do
+		if flag then
+			break
+		end
+		for j=i, 50 do
+			if j == i then
+				print("Existe numero repetido")
+				flag = true
+				break				
+			end
+		end
+	end
+end
+
+print(repetido(vetor))
+
+--40
+
+mat = {}
+for i =1, 30 do 
+	mat[i] = {}
+	for j =1, 30 do
+		mat[i][j] = math.random()
+	end
+end
+
+function repetidomatriz(matriz)
+	flag = false
+	for i=1, 30 do
+		if flag then
+			break
+		end
+		for j=1, 30 do
+			if flag then
+				break
+			end
+			for k=1, 30 do
+				if flag then
+					break
+				end
+				for l=1, 30 do
+					if matriz[i][j] == matriz[k][l] then
+						print("Existe numero repetido", matriz[i][j])
+						flag = true
+						break
+					end
+				end
+			end
+		end
+	end
+end
+
+print(repetidomatriz(mat))
+
+
+--42
+vet = {}
+for i =1, 10 do
+	vet[i] = math.random(0,100)
+end
+
+function vetorinverso(vetor)
+	vetorinvertido = {}
+	for i=1, 10 do
+		vetorinvertido[i] = vetor[#vetor-i+ 1]
+	end
+	return vetorinvertido
+
+end
+
+for i =1, 10 do
+	print(vet[i], vetorinverso(vet)[i])
+end
+
+
+--43
+mat = {}
+for i=1, 4 do
+	mat[i] = {}
+	for j=1, 4 do
+		mat[i][j] = math.random(1,10)
+	end
+end
+
+
+function inversomatriz(matriz)
+	matinversa = {}
+	for i=1, 4 do
+		matinversa[i]= {}
+		for j=1, 4 do
+			matinversa[i][j] = matriz[j][i]
+		end
+	end
+	return matrizinversa
+end
 ]]
+
+
